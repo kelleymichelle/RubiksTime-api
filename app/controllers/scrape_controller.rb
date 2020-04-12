@@ -12,7 +12,7 @@ class ScrapeController < ApplicationController
         wc_events = events.map do |event|
             {
             date: event.css('.date').text.strip,
-            name: event.css('.competition-info').text.strip,
+            name: event.css('.competition-link').text.strip,
             location: event.css('.location').text.strip
             }
         end
