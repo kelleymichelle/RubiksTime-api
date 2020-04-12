@@ -3,11 +3,11 @@ require 'open-uri'
 
 class ScrapeController < ApplicationController
 
-    def popular_destinations
+    def wca_events
 
-        url = 'https://www.townandcountrymag.com/leisure/travel-guide/g17236981/best-places-to-visit-in-april/'
+        url = 'https://www.worldcubeassociation.org/competitions?utf8=%E2%9C%93&region=_North+America&search=&state=present&year=all+years&from_date=&to_date=&delegate=&display=list'
         doc = Nokogiri::HTML(open(url))
-        # destinations = []
+
         places = doc.css('.listicle-slide')
         destinations = places.map do |place|
                 {
