@@ -8,8 +8,9 @@ class CubesController < ApplicationController
     #should show times by selected cube by user
   end
 
-  def create
-    #should add times/records for selected sube by user
+  def add_records
+    #/users/:user_id/cubes/:cube_id/add_time POST
+    #should add times/records for selected cube by user
   end
-  
+
 end
