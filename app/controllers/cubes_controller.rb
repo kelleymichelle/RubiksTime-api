@@ -6,13 +6,23 @@ class CubesController < ApplicationController
 
   def show
     #should show times by selected cube by user
+    user = User.find_by(id: params[:user_id])
+    cube = Cube.find_by(cube_type: params[:cube_type])
+
+    records = Record.where(user: user, cube: cube)
+
+    render json: {
+      records: records
+    }
+
+    # byebug
   end
 
   def add_records
     user = User.find_by(id: params[:user_id])
     cube = Cube.find_by(cube_type: params[:cube_type])
     record = params[:record]
-    r = Record.new(cube_time: record, user: user, cube: cube)
+    r = Record.new(cube_time: record, user: user, cube: cube, created_at: Time.zone.now, updated_at: Time.zone.now)
     
     if r.save!
         render json: {
