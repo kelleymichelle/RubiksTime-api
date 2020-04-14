@@ -9,10 +9,11 @@ class CubesController < ApplicationController
     user = User.find_by(id: params[:user_id])
     cube = Cube.find_by(cube_type: params[:cube_type])
 
-    records = Record.where(user: user, cube: cube)
+    records = Record.where(user: user, cube: cube).order(created_at: :desc)
 
     render json: {
-      records: records
+      all_times_by_cube: records,
+      last_5: records.limit(5)
     }
 
     # byebug
