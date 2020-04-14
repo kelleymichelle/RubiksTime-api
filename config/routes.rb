@@ -8,4 +8,10 @@ Rails.application.routes.draw do
   
   get '/wca_events', to: 'scrape#wca_events'
 
+  post '/users/:user_id/cubes/:cube_id/records', to: 'cubes#add_records'
+
+  resources :users do
+    resources :cubes
+  end
+
 end
