@@ -10,6 +10,7 @@ Rails.application.routes.draw do
 
   get '/users/:user_id/cubes/:cube_type', to: 'cubes#show'
   post '/users/:user_id/cubes/:cube_type/add_record', to: 'cubes#add_records'
+  delete '/users/:user_id/delete_last_record', to: 'users#delete_last_record'
   
 
   resources :users do

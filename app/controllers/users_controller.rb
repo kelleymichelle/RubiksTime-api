@@ -45,6 +45,17 @@ class UsersController < ApplicationController
         end
     end
 
+    def delete_last_record
+        # byebug
+        user = User.find(params[:user_id])
+        user.records.last.delete
+        render json: {
+            status: "success",
+            user: user,
+            records: user.records
+        }
+    end
+
         private
     def user_params
         params.require(:user).permit(:username, :password)
